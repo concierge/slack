@@ -65,6 +65,9 @@ var request = require('request'),
     },
 
     sendMessage = function(message, thread) {
+        if (message.trim() === '') {
+            return;
+        }
         var teamInfo = getChannelIdAndTeamId(thread);
         var messages = shim._chunkMessage(message, 3500);
 
